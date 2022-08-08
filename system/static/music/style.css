@@ -1,0 +1,14 @@
+body{
+    background-image:url("images/User.jpeg"), url("images/background2.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+}
+
+.navbar{
+    border-radius: 0;
+}
+
+.navbar-brand{
+    font-family: 'Satisfy', cursive;
+}

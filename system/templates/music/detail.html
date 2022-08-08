@@ -1,0 +1,28 @@
+{% extends 'music/base.html' %}
+{% block title %}Album Details{% endblock %}
+
+{% block body %}
+    <img src="{{ album.album_logo }}">
+
+    <h1><font color="aliceblue" size="6">{{album.album_title}}</font></h1>
+    <h2><font color="aliceblue" size="6">{{ album.artist }}</font></h2>
+
+
+    {% if error_message %}
+        <p><strong> {{ error_message }}</strong></p>
+    {% endif %}
+
+    <form action = "{% url 'music:favorite' album.id %}" method = "post">
+        {% csrf_token %}
+        {% for song in album.song_set.all %}
+            <input type="radio" id="song{{ forloop.counter }}" name = "song" value = "{{ song.id }}"/>
+            <label for="song{{ forloop.counter }}">
+                <font color="aliceblue" size="6">{{ song.song_title }}</font></h2>
+                {% if song.is_favorite %}
+                    <img src = "http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/16/star-full-icon.png" />
+                {% endif %}
+            </label><br>
+        {% endfor %}
+        <input type = "submit" value="Favorite">
+    </form>
+{% endblock %}

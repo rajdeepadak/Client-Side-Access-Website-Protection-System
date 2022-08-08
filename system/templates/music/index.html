@@ -1,0 +1,14 @@
+{% extends 'music/base.html' %}
+
+{% block body %}
+    {% if all_albums %}
+        <h4><font color = '#floralwhite' size="8">Your Albums:</font></h4>
+        <ul>
+            {% for album in all_albums %}
+            <li><a href="{% url 'music:detail' album.id %}"><font color = 'white' size="6">{{ album.album_title }}</font></a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>You don't have any albums</h3>
+    {% endif %}
+{% endblock %}
